@@ -1,0 +1,34 @@
+import pandas as pd
+from agents.data_engineer import DataEngineer
+from agents.ml_strategy import MLStrategy
+from agents.model_architect import ModelArchitect
+from agents.experiment_agent import ExperimentAgent
+
+
+def run_test():
+    df = pd.read_csv('datasets/sample_loan_data.csv')
+
+    # Data engineering
+    de = DataEngineer()
+    X_clean, y, preproc = de.clean(df, target='Loan_Approved')
+
+    # Determine task
+    strategy = MLStrategy()
+    strategy_result = strategy.determine_task(df, 'Loan_Approved')
+    task = strategy_result['task_type']
+
+    # Model selection
+    ma = ModelArchitect()
+    models = ma.select_models(task)
+
+    # Run experiment
+    agent = ExperimentAgent(output_dir='outputs/models_test')
+    results = agent.train_models(models, X_clean, y, task)
+
+    print('Leaderboard:')
+    for r in results['leaderboard']:
+        print(r['name'], r.get('metrics'))
+
+
+if __name__ == '__main__':
+    run_test()
