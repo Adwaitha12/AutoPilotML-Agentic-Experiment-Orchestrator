@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine Learning Experiment Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; color: #1f2937; }
+    h1, h2 { color: #111827; }
+    .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+    th { background: #f3f4f6; }
+    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; margin-right: 6px; }
+    img { max-width: 100%; border: 1px solid #e5e7eb; border-radius: 6px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Machine Learning Experiment Report</h1>
+  <div class="card"><h2>Executive Summary</h2><p>This report summarizes an experiment for a classification task. It includes the data quality assessment, preprocessing steps, model performance, reviewer feedback, and recommended next actions.</p></div>
+  <div class="card"><h2>Dataset Summary</h2><p><strong>Rows:</strong> 891<br><strong>Columns:</strong> 15<br><strong>Target Column:</strong> Survived</p></div>
+  <div class="card"><h2>Cleaning Summary</h2><ul><li>remove_duplicates: </li><li>handle_missing_values: Imputed missing values for 3 column(s).</li><li>encode_categorical_columns: Encoded 5 categorical column(s).</li><li>scale_numeric_columns: Scaled 14 numeric column(s).</li></ul></div>
+  <div class="card"><h2>Models Compared</h2><table><tr><th>Model</th><th>Metrics</th></tr><tr><td>LogisticRegression</td><td>train_score=0.813 ; test_score=0.810 ; accuracy=0.810 ; precision=0.809 ; recall=0.810 ; f1=0.810 ; roc_auc=0.875</td></tr><tr><td>DecisionTreeClassifier</td><td>train_score=1.000 ; test_score=0.788 ; accuracy=0.788 ; precision=0.787 ; recall=0.788 ; f1=0.787 ; roc_auc=0.777</td></tr><tr><td>RandomForestClassifier</td><td>train_score=1.000 ; test_score=0.838 ; accuracy=0.838 ; precision=0.838 ; recall=0.838 ; f1=0.837 ; roc_auc=0.901</td></tr><tr><td>GradientBoostingClassifier</td><td>train_score=0.933 ; test_score=0.793 ; accuracy=0.793 ; precision=0.793 ; recall=0.793 ; f1=0.791 ; roc_auc=0.878</td></tr></table></div>
+  <div class="card"><h2>Leader Board</h2><table><tr><th>Rank</th><th>Model</th><th>Metrics</th></tr><tr><td>1</td><td>RandomForestClassifier</td><td>accuracy=0.838 ; precision=0.838 ; recall=0.838 ; f1=0.837 ; roc_auc=0.901</td></tr><tr><td>2</td><td>LogisticRegression</td><td>accuracy=0.810 ; precision=0.809 ; recall=0.810 ; f1=0.810 ; roc_auc=0.875</td></tr><tr><td>3</td><td>GradientBoostingClassifier</td><td>accuracy=0.793 ; precision=0.793 ; recall=0.793 ; f1=0.791 ; roc_auc=0.878</td></tr><tr><td>4</td><td>DecisionTreeClassifier</td><td>accuracy=0.788 ; precision=0.787 ; recall=0.788 ; f1=0.787 ; roc_auc=0.777</td></tr></table></div>
+  <div class="card"><h2>Best Model</h2><p><strong>RandomForestClassifier</strong></p><p>RandomForestClassifier was selected as the best model because it achieved the strongest overall classification performance with accuracy 0.838, precision 0.838, recall 0.838, F1 0.837, and ROC AUC 0.901.</p></div>
+  <div class="card"><h2>Critic Analysis</h2><h3>Issues</h3><ul><li>possible overfitting</li></ul><h3>Recommendations</h3><ul><li>A notable gap between training and test performance suggests overfitting; inspect feature complexity and regularization.</li><li>Use precision, recall, and F1 as primary metrics when class imbalance is present; accuracy alone can be misleading.</li><li>Missing values were present; confirm that imputation did not introduce bias or distort distributions.</li><li>If the dataset is time-dependent or grouped, verify that train/test splits do not leak future information into training data.</li><li>Use cross-validation for a more reliable estimate of generalization, especially with a small or imbalanced dataset.</li></ul></div>
+  <div class="card"><h2>Charts</h2><ul><li><strong>accuracy_comparison</strong><br><img src="outputs\charts\accuracy_comparison.png" alt="accuracy_comparison"></li><li><strong>confusion_matrix</strong><br><img src="outputs\charts\confusion_matrix.png" alt="confusion_matrix"></li><li><strong>roc_curve</strong><br><img src="outputs\charts\roc_curve.html" alt="roc_curve"></li><li><strong>feature_importance</strong><br><img src="outputs\charts\feature_importance.png" alt="feature_importance"></li></ul></div>
+  <div class="card"><h2>Business Recommendations</h2><ul><li>A notable gap between training and test performance suggests overfitting; inspect feature complexity and regularization.</li><li>Use precision, recall, and F1 as primary metrics when class imbalance is present; accuracy alone can be misleading.</li><li>Missing values were present; confirm that imputation did not introduce bias or distort distributions.</li><li>If the dataset is time-dependent or grouped, verify that train/test splits do not leak future information into training data.</li><li>Use cross-validation for a more reliable estimate of generalization, especially with a small or imbalanced dataset.</li></ul></div>
+</body>
+</html>
