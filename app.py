@@ -176,10 +176,14 @@ def inject_theme() -> None:
         .insight-card h4 { margin:0 0 .75rem; color:var(--ink); }
         .insight-card p { color:#475569; font-size:.88rem; line-height:1.55; margin:.35rem 0; }
         .chart-copy { color:var(--muted); font-size:.84rem; min-height:2.7rem; }
-        .empty-state { background:#fff; border:1px dashed #cbd5e1; border-radius:16px; padding:4rem 2rem; text-align:center; margin-top:2rem; }
+        .empty-state { background:#fff; border:1px dashed #cbd5e1; border-radius:16px; padding:3.75rem 2rem; text-align:center; margin-top:2rem; }
+        .empty-state .eyebrow { display:block; width:100%; padding:0 .5rem; text-align:center; overflow-wrap:anywhere; }
         .empty-state h3 { margin:.4rem 0; }
         .empty-state p { color:var(--muted); }
-        @media(max-width:900px) { .feature-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+        @media(max-width:900px) {
+            .feature-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+            .empty-state { padding:3rem 1.25rem; }
+        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -188,7 +192,7 @@ def inject_theme() -> None:
 
 def render_empty_state() -> None:
     st.markdown(
-        """<div class="empty-state"><div class="eyebrow">Ready when you are</div>
+        """<div class="empty-state"><div class="eyebrow">Upload a dataset to begin</div>
         <h3>Turn a CSV into a complete ML experiment</h3>
         <p>Upload a dataset from the sidebar, choose its target, and let the agent team take it from there.</p></div>""",
         unsafe_allow_html=True,
@@ -201,7 +205,6 @@ def load_dataset(uploaded_file: Any) -> pd.DataFrame:
 
 
 def render_header(dataset_name: str | None, context: ExperimentContext | None) -> None:
-    st.markdown('<div class="eyebrow">Autonomous experiment workspace</div>', unsafe_allow_html=True)
     st.title("AgentLab AI")
     st.markdown(
         '<p class="hero-copy">A coordinated AI data science team that inspects, prepares, trains, evaluates, and documents your machine learning experiment.</p>',
